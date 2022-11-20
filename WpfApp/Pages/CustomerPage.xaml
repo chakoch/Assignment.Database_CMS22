@@ -1,0 +1,57 @@
+﻿<Page x:Class="WpfApp.Pages.CustomerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Kund registrering">
+
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Margin="20">
+                <StackPanel>
+                    <TextBlock Text="Kundens namn" Margin="0 0 0 7" />
+                    <TextBox Name="tb_customer_name" Padding="5" Margin="0 0 0 10" />
+
+                    <TextBlock Text="Kundens epost" Margin="0 0 0 7" />
+                    <TextBox Name="tb_customer_email" Padding="5" Margin="0 0 0 10" />
+
+                    <Button Name="btn_customer_save" Grid.Row="1" Click="btn_customer_save_Click" Content="Skicka" Padding="5" />
+                    <Button Name="btn_customer_update" Grid.Row="1" Click="btn_customer_update_Click" Content="Uppdatera" Padding="5" Visibility="Collapsed" />
+                </StackPanel>
+
+            </Grid>
+            <Grid Grid.Column="1" Margin="20">
+                <ListView Name="lv_customers" SelectionChanged="lv_customers_SelectionChanged" Margin="10" HorizontalContentAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding FullInfo }" />
+                                    <TextBlock Text="{Binding Email} " />
+
+                                </StackPanel>
+                                
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                </ListView>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>
